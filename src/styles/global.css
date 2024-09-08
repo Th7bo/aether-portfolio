@@ -1,0 +1,218 @@
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+  float: right;
+  padding: 2.5rem 0 0 0;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  /* background-color: #ff9776; */
+  background-image: var(--accent-gradient);
+  background-size: 400%;
+  background-position: 0%;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: none;
+  /* margin: 0; */
+  height: 100vh;
+}
+
+.nav-links a {
+  /* display: block; */
+  /* text-align: center; */
+  /* padding: 10px 0; */
+  /* text-decoration: none; */
+  /* font-size: 1.2rem; */
+  /* font-weight: bold; */
+  /* text-transform: uppercase; */
+}
+
+.expanded {
+  display: unset;
+  height: 100%;
+}
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    margin-left: 5em;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+:root {
+  margin: 0 0 0 0;
+  background:
+    linear-gradient(rgba(19, 21, 26, 0.9), rgba(19, 21, 26, 0.9)),
+    url("wallpaper-winter.jpg") center center fixed no-repeat;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+}
+
+main {
+  margin: auto;
+  padding: 1rem;
+  width: 1000px;
+  max-width: calc(100% - 2rem);
+  color: white;
+  font-size: 20px;
+  line-height: 1.6;
+}
+nav {
+  /* margin-left: 100%; */
+  /* margin-right: 2%; */
+  display: inline;
+  /* padding: 1rem; */
+  /* width: 100px; */
+  /* max-width: calc(10% - 2rem); */
+  color: white;
+  font-size: 20px;
+  /* line-height: 1.6; */
+}
+.astro-a {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 220px;
+  height: auto;
+  z-index: -1;
+}
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+h2 {
+  /* font-size: 3rem; */
+  font-weight: 400;
+  /* line-height: 1; */
+  /* text-align: center; */
+  margin-bottom: 0.4em;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+.left {
+  text-align: left;
+}
+.text-gradient {
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  background-position: 0%;
+  font-weight: 600;
+}
+.link-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+  gap: 2rem;
+  padding: 0;
+}
+.small-link-card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+.contact-link-card-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+.navbar-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12ch, 0.1fr));
+  /* gap: 2rem; */
+  float: right;
+  padding: 1.5rem 0 0 0;
+  margin: 0;
+  list-style: none;
+}
+.dollar {
+  font-weight: 3000;
+  font-size: xx-large;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.main {
+  flex-grow: 1;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.container {
+  row-gap: 0.75rem;
+  margin-top: 0.75rem;
+  max-width: 16rem;
+}
+
+.contact-card {
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.contact-card > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}

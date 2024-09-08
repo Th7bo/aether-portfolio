@@ -1,0 +1,25 @@
+---
+interface Props {
+  platform: string;
+  name: string;
+  color: string;
+  second_color: string;
+  link: string;
+}
+
+const { color, platform, name, second_color, link } = Astro.props;
+---
+
+<div class="flex flex-col">
+  <div class="relative">
+    <a
+      href=`${link}`
+      class="flex contact-card"
+      style=`color:${color};background-color:${color}33`
+    >
+      <span>{platform}</span><span
+        style=`color:${second_color};font-weight: 600;`>{name}</span
+      >
+    </a>
+  </div>
+</div>

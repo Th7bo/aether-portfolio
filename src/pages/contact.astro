@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hamburger from "../components/Hamburger.astro";
+import ContactCard from "../components/ContactCard.astro";
+---
+
+<Layout title="thibo's contact">
+  <main>
+    <header>
+      <nav>
+        <Hamburger />
+        <ul role="list" class="navbar-card-grid">
+          <div class="nav-links">
+            <Navbar href="/" title="Home" />
+            <Navbar href="/projects" title="Projects" />
+            <Navbar href="/contact" title="Contact" />
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="left">hey i'm <span class="text-gradient">th7bo</span>!</h1>
+    <h2>
+      <strong><span class="dollar">$</span></strong> contact
+    </h2>
+    <p>You can contact me with following methods:</p>
+    <div class="main">
+      <div class="flex flex-col">
+        <div>
+          <div class="flex flex-col container">
+            <ContactCard
+              color="#95a0ff"
+              second_color="#6870b6"
+              platform="Discord"
+              name=".th7"
+              link="https://discordapp.com/users/350275136206667777"
+            />
+            <ContactCard
+              color="#ff9597"
+              second_color="#bd6e70"
+              platform="Mail"
+              name="info@th7bo.com"
+              link="mailto:info@th7bo.com"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>
+      <strong><span class="dollar">$</span></strong> socials
+    </h2>
+    <p>Peep some socials below:</p>
+    <div class="main">
+      <div class="flex flex-col">
+        <div>
+          <div class="flex flex-col container">
+            <ContactCard
+              color="#95afff"
+              second_color="#7185c1"
+              platform="Steam"
+              name="Th7boooo"
+              link="https://steamcommunity.com/id/Th7boooo"
+            />
+            <ContactCard
+              color="#afb3bf"
+              second_color="#999ca4"
+              platform="GitHub"
+              name="Th7bo"
+              link="https://github.com/Th7bo"
+            />
+            <ContactCard
+              color="#b6ff95"
+              second_color="#84b96c"
+              platform="Minecraft"
+              name="Th7bo"
+              link=""
+            />
+            <ContactCard
+              color="#fb6f73"
+              second_color="#c1585b"
+              platform="Youtube"
+              name="Th7bo"
+              link="https://www.youtube.com/@Th7bo"
+            />
+            <ContactCard
+              color="#be95ff"
+              second_color="#9173c1"
+              platform="Twitch"
+              name="ThiboV2"
+              link="https://www.twitch.tv/thibov2"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul role="list" class="contact-link-card-grid">
+      <!-- <ContactCard
+        color="rgba(230,40,55,255)"
+        second_color="white"
+        platform="test"
+        name="name"
+      /> -->
+    </ul>
+
+    <style></style>
+  </main></Layout
+>

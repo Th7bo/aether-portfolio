@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Navbar from "../components/Navbar.astro";
+import Hamburger from "../components/Hamburger.astro";
+---
+
+<Layout title="thibo's servers">
+  <main>
+    <header>
+      <nav>
+        <Hamburger />
+        <ul role="list" class="navbar-card-grid">
+          <div class="nav-links">
+            <Navbar href="/" title="Home" />
+            <Navbar href="/projects" title="Projects" />
+            <Navbar href="/contact" title="Contact" />
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="left">hey i'm <span class="text-gradient">th7bo</span>!</h1>
+    <h2>
+      <strong><span class="dollar">$</span></strong> projects
+    </h2>
+    <p>
+      Welcome to "my" projects page, here are some servers I've been dev / admin
+      on and some tech thingies I've made.
+    </p>
+    <ul role="list" class="link-card-grid">
+      <Card
+        href="https://github.com/Th7bo/Quizzer"
+        title="Quizzer plugin"
+        body="This was a plugin Devroom request me to make to become a freelancer on their platform specializing in plugin development."
+      />
+      <Card
+        href="https://discord.gg/7fwgEYcPRn"
+        title="Depthful"
+        body="My own prison server made using Kotlin, MongoDB and JDA. Everything on this server is custom coded and fine-tuned to the server, the plugins use lots of managers to easily expand the gameplay inside the server and to shorten the time needed to code repetitive things."
+      />
+      <Card
+        href="https://discord.gg/qrpDquRYhA"
+        title="Cloods"
+        body=`This is also a server I own, it's a skymining server so you start out with some gear and gather resources on individual island to then upgrade your gear. After you've gotten to Diamond gear, you can "rebirth" to the next world where everything is more grindy but the custom enchants pay off.`
+      />
+      <Card
+        href="https://discord.gg/theuniverse"
+        title="The Universe"
+        body=`I used to be a core developer for this server assisting in the switch from Skript to Java as the server has blew up on TikTok and skript wasn't really fit for the amount of players. We immediately knew that we needed multiple servers to accommodate all of the players, thus we made an easy to use scalable network including proxy plugins.`
+      />
+      <Card
+        href="https://discord.gg/Rs3kGQVrgd"
+        title="Embox"
+        body='This is a server made using skript that aims to provide a factions like experience but contained in a small bedrock world with "money generators". Base raiding and defending is a big deal here since you can raid anyone, anywhere, any time so grinding and being prepared is key.'
+      />
+      <Card
+        href="https://discord.gg/uAcAhhPHS2"
+        title="HeatGens"
+        body="I recently became a developer on this server to refactor plugins from 1.19.4 to 1.21 which heavily relied on nms and packets."
+      />
+
+      <Card
+        href="https://discord.gg/D7fSvFuDRe"
+        title="fClick"
+        body=`The current fClick server is a revamp to relive nostalgia from the original fClick server that released in 2020.`
+      />
+      <Card
+        href="https://discord.gg/BenDsSx6v3"
+        title="CubeClicker"
+        body=`This server is based around upgrading your clicker to do more damage to blocks in areas from which you get coins. With these coins you can get new pets, clickers, areas, ...`
+      />
+      <Card
+        href="https://discord.gg/dXCX8fsHez"
+        title="RiftSkies"
+        body=`This server too is a SkyMining server, but has been refined to retain lots of players, often peaking at 70+ players.`
+      />
+      <Card
+        href="https://discord.gg/4gBEvrD2eq"
+        title="Outerstars"
+        body=`This server is based around Space Discovery using a custom texture pack and multiple worlds to provide an immersive play world and lore. Using custom chat systems and shaders we can provide interactive NPC/player conversations. Sadly this has been disbanded..`
+      />
+    </ul>
+  </main>
+</Layout>
