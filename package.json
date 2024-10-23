@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/ts-plugin": "^1.10.1",
-    "astro": "^4.15.3",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/ts-plugin": "^1.10.3",
+    "astro": "^4.16.7",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
