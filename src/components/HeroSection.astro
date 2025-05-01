@@ -1,0 +1,269 @@
+<section class="hero-section" data-animate="fade-in">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        hey i'm <span class="text-gradient">th7bo</span>
+      </h1>
+      <p class="hero-subtitle" data-animate="fade-in" data-delay="0.2">
+        Software Developer & Minecraft Server Developer
+      </p>
+      <div class="hero-cta" data-animate="fade-in" data-delay="0.4">
+        <a href="/projects" class="cta-button glass">
+          View My Projects
+          <span class="arrow">→</span>
+        </a>
+        <a href="/contact" class="cta-button-secondary">
+          Contact Me
+        </a>
+      </div>
+    </div>
+    <div class="hero-image-wrapper" data-animate="fade-in" data-delay="0.3">
+      <div class="hero-image-container">
+        <div class="hero-image glass">
+          <div class="avatar-container">
+            <div class="avatar-placeholder-icon">TH</div>
+            <img 
+              src="/avatar.webp" 
+              alt="Avatar" 
+              class="avatar-image"
+              width="180" 
+              height="180"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+        <div class="tech-badge java-badge glass" data-animate="fade-in" data-delay="0.5">
+          <span>Java</span>
+        </div>
+        <div class="tech-badge kotlin-badge glass" data-animate="fade-in" data-delay="0.6">
+          <span>Kotlin</span>
+        </div>
+        <div class="tech-badge mongo-badge glass" data-animate="fade-in" data-delay="0.7">
+          <span>MongoDB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0 4rem 0;
+    position: relative;
+    z-index: var(--z-content);
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    color: rgba(var(--text), 0.8);
+    margin-bottom: 2rem;
+    max-width: 40ch;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: var(--transition-fast);
+    background: rgba(var(--accent), 0.2);
+    color: rgb(var(--text));
+    border: 1px solid rgba(var(--accent), 0.3);
+    position: relative;
+    z-index: var(--z-content);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+  }
+
+  .cta-button .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .cta-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: var(--transition-fast);
+    background: transparent;
+    color: rgb(var(--text));
+    border: 1px solid rgba(var(--text), 0.2);
+    position: relative;
+    z-index: var(--z-content);
+  }
+
+  .cta-button-secondary:hover {
+    background: rgba(var(--text), 0.05);
+    border-color: rgba(var(--text), 0.3);
+  }
+
+  .hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-image {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--card-bg), 0.5);
+    border: 1px solid rgba(var(--accent), 0.2);
+    position: relative;
+    z-index: var(--z-content);
+  }
+
+  .avatar-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+  }
+  
+  .avatar-placeholder-icon {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(var(--accent), 0.7), rgba(var(--accent-light), 0.7));
+    border-radius: 50%;
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(var(--background), 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(var(--accent), 0.3);
+    opacity: 0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .avatar-image {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 8px 32px rgba(var(--accent), 0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .tech-badge {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: rgba(var(--card-bg), 0.8);
+    border: 1px solid rgba(var(--accent), 0.2);
+    z-index: var(--z-content);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+  }
+  
+  .java-badge {
+    top: 30px;
+    right: -10px;
+  }
+  
+  .kotlin-badge {
+    top: 180px;
+    left: -10px;
+  }
+  
+  .mongo-badge {
+    bottom: 30px;
+    right: -10px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-cta {
+      justify-content: center;
+    }
+
+    .hero-image-wrapper {
+      margin-top: 2rem;
+    }
+
+    .tech-badge {
+      display: none;
+    }
+  }
+
+  :global(body), :global(html) {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+  });
+</script>
+
+<!-- Preload the avatar image to ensure fast loading -->
+<link rel="preload" href="/avatar.webp" as="image" type="image/webp" fetchpriority="high"> 

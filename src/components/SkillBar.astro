@@ -1,0 +1,231 @@
+---
+interface Skill {
+  name: string;
+  level: number; // 0-100
+  icon?: string;
+  color?: string;
+}
+
+interface SkillCategory {
+  name: string;
+  skills: Skill[];
+}
+
+interface Props {
+  title?: string;
+  categories: SkillCategory[];
+}
+
+const defaultCategories: SkillCategory[] = [
+  {
+    name: "Languages",
+    skills: [
+      { name: "JavaScript", level: 90, color: "#f7df1e" },
+      { name: "Python", level: 80, color: "#366b98" },
+      { name: "Java", level: 85, color: "#ea2d2e" },
+      { name: "Kotlin", level: 80, color: "#7F52FF" },
+      { name: "C#", level: 75, color: "#9b4f96" },
+    ]
+  },
+  {
+    name: "Backend",
+    skills: [
+      { name: "Node.js", level: 90, color: "#68a063" },
+      { name: "REST APIs", level: 90, color: "#24292e" },
+    ]
+  },
+  {
+    name: "Database & Cloud",
+    skills: [
+      { name: "MongoDB", level: 85, color: "#3FA037" },
+      { name: "PostgreSQL", level: 80, color: "#336791" },
+      { name: "MySQL", level: 85, color: "#4479A1" },
+      { name: "Docker", level: 80, color: "#2496ED" },
+      { name: "Kubernetes", level: 65, color: "#326CE5" },
+    ]
+  },
+  {
+    name: "Tools & Others",
+    skills: [
+      { name: "Git", level: 90, color: "#F05032" },
+      { name: "GitHub/GitLab", level: 85, color: "#ffffff" },
+      { name: "VS Code", level: 95, color: "#007ACC" },
+    ]
+  }
+];
+
+const { title = "Skills & Technologies", categories = defaultCategories } = Astro.props;
+---
+
+<div class="skills-container glass" data-animate="fade-up">
+  <h2 class="skills-title">{title}</h2>
+  
+  <div class="skills-categories">
+    {categories.map((category, catIndex) => (
+      <div class="skills-category" data-animate="fade-in" data-delay={0.1 * catIndex}>
+        <h3 class="category-title">{category.name}</h3>
+        <div class="skills-list">
+          {category.skills.map((skill, index) => (
+            <div class="skill-item" data-animate="fade-in" data-delay={0.05 * index + 0.1}>
+              <div class="skill-info">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-level">{skill.level}%</span>
+              </div>
+              <div class="skill-bar">
+                <div 
+                  class="skill-progress" 
+                  style={`width: ${skill.level}%; background: ${skill.color || `rgb(var(--accent))`};`}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .skills-container {
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .skills-title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--accent-light));
+    border-bottom: 1px solid rgba(var(--accent), 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .skill-item {
+    width: 100%;
+  }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-name {
+    font-weight: 500;
+  }
+
+  .skill-level {
+    color: rgb(var(--accent-light));
+    font-weight: 600;
+  }
+
+  .skill-bar {
+    height: 10px;
+    background-color: rgba(var(--text), 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .skill-progress {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .skills-categories {
+      grid-template-columns: 1fr;
+    }
+    
+    .skills-title {
+      font-size: 1.75rem;
+    }
+    
+    .category-title {
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .skills-container {
+      padding: 1.5rem;
+    }
+    
+    .skills-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .skills-categories {
+      gap: 1.5rem;
+    }
+    
+    .category-title {
+      margin-bottom: 1rem;
+    }
+    
+    .skills-list {
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Animation for skill bars
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const container = entry.target;
+          const bars = container.querySelectorAll('.skill-progress');
+          
+          // Store the target widths and then set bars to 0
+          bars.forEach(bar => {
+            const style = (bar as HTMLElement).getAttribute('style') || '';
+            const widthMatch = style.match(/width:\s*(\d+)%/);
+            const targetWidth = widthMatch ? widthMatch[1] : '0';
+            
+            // Store the target width as a data attribute
+            (bar as HTMLElement).dataset.targetWidth = targetWidth;
+            
+            // Set initial width to 0
+            (bar as HTMLElement).style.width = '0%';
+          });
+          
+          // Animate to target width after a small delay
+          setTimeout(() => {
+            bars.forEach(bar => {
+              const targetWidth = (bar as HTMLElement).dataset.targetWidth || '0';
+              (bar as HTMLElement).style.width = `${targetWidth}%`;
+            });
+          }, 50);
+          
+          observer.unobserve(container);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const skillsContainers = document.querySelectorAll('.skills-container');
+    skillsContainers.forEach(container => {
+      observer.observe(container);
+    });
+  });
+</script> 

@@ -1,108 +1,269 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Hamburger from "../components/Hamburger.astro";
 import ContactCard from "../components/ContactCard.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Thibo | Contact">
+  <Navigation activeLink="/contact" />
+  
   <main>
-    <header>
-      <nav>
-        <Hamburger />
-        <ul role="list" class="navbar-card-grid">
-          <div class="nav-links">
-            <Navbar href="/" title="Home" />
-            <Navbar href="/projects" title="Projects" />
-            <Navbar href="/contact" title="Contact" />
-          </div>
-        </ul>
-      </nav>
-    </header>
-    <h1 class="left">hey i'm <span class="text-gradient">th7bo</span>!</h1>
-    <h2>
-      <strong><span class="dollar">$</span></strong> contact
-    </h2>
-    <p>You can contact me with following methods:</p>
-    <div class="main">
-      <div class="flex flex-col">
-        <div>
-          <div class="flex flex-col container">
-            <ContactCard
-              color="#95a0ff"
-              second_color="#6870b6"
-              platform="Discord"
-              name=".th7"
-              link="https://discordapp.com/users/350275136206667777"
-            />
-            <ContactCard
-              color="#ff9597"
-              second_color="#bd6e70"
-              platform="Mail"
-              name="info@th7bo.com"
-              link="mailto:info@th7bo.com"
-            />
-          </div>
+    <section class="contact-header" data-animate="fade-in">
+      <h1>Get in <span class="text-gradient">Touch</span></h1>
+      <p class="contact-intro">
+        Feel free to reach out for collaboration opportunities, questions about my projects, 
+        or just to say hello!
+      </p>
+    </section>
+
+    <div class="contact-grid">
+      <section class="contact-section glass" data-animate="fade-in" data-delay="0.2">
+        <h2><span class="dollar">$</span> contact methods</h2>
+        <p>Here's how you can reach me directly:</p>
+        
+        <div class="contact-methods">
+          <ContactCard
+            color="#95a0ff"
+            second_color="#6870b6"
+            platform="Discord"
+            name=".th7"
+            link="https://discordapp.com/users/350275136206667777"
+          />
+          <ContactCard
+            color="#ff9597"
+            second_color="#bd6e70"
+            platform="Mail"
+            name="info@th7bo.com"
+            link="mailto:info@th7bo.com"
+          />
         </div>
-      </div>
+      </section>
+
+      <section class="contact-form-section glass" data-animate="fade-in" data-delay="0.3">
+        <h2><span class="dollar">$</span> send a message</h2>
+        <p>Or fill out this form to send me a message directly:</p>
+        
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Your email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="Message subject" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Your message..." rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            Send Message
+            <span class="button-arrow">→</span>
+          </button>
+        </form>
+      </section>
     </div>
 
-    <h2>
-      <strong><span class="dollar">$</span></strong> socials
-    </h2>
-    <p>Peep some socials below:</p>
-    <div class="main">
-      <div class="flex flex-col">
-        <div>
-          <div class="flex flex-col container">
-            <ContactCard
-              color="#95afff"
-              second_color="#7185c1"
-              platform="Steam"
-              name="Th7boooo"
-              link="https://steamcommunity.com/id/Th7boooo"
-            />
-            <ContactCard
-              color="#afb3bf"
-              second_color="#999ca4"
-              platform="GitHub"
-              name="Th7bo"
-              link="https://github.com/Th7bo"
-            />
-            <ContactCard
-              color="#b6ff95"
-              second_color="#84b96c"
-              platform="Minecraft"
-              name="Th7bo"
-              link=""
-            />
-            <ContactCard
-              color="#fb6f73"
-              second_color="#c1585b"
-              platform="Youtube"
-              name="Th7bo"
-              link="https://www.youtube.com/@Th7bo"
-            />
-            <ContactCard
-              color="#be95ff"
-              second_color="#9173c1"
-              platform="Twitch"
-              name="ThiboV2"
-              link="https://www.twitch.tv/thibov2"
-            />
-          </div>
-        </div>
+    <section class="socials-section glass" data-animate="fade-in" data-delay="0.4">
+      <h2><span class="dollar">$</span> find me online</h2>
+      <p>Connect with me on these platforms:</p>
+      
+      <div class="socials-grid">
+        <ContactCard
+          color="#95afff"
+          second_color="#7185c1"
+          platform="Steam"
+          name="Th7boooo"
+          link="https://steamcommunity.com/id/Th7boooo"
+        />
+        <ContactCard
+          color="#afb3bf"
+          second_color="#999ca4"
+          platform="GitHub"
+          name="Th7bo"
+          link="https://github.com/Th7bo"
+        />
+        <ContactCard
+          color="#b6ff95"
+          second_color="#84b96c"
+          platform="Minecraft"
+          name="Th7bo"
+          link=""
+        />
+        <ContactCard
+          color="#fb6f73"
+          second_color="#c1585b"
+          platform="Youtube"
+          name="Th7bo"
+          link="https://www.youtube.com/@Th7bo"
+        />
+        <ContactCard
+          color="#be95ff"
+          second_color="#9173c1"
+          platform="Twitch"
+          name="ThiboV2"
+          link="https://www.twitch.tv/thibov2"
+        />
       </div>
-    </div>
-    <ul role="list" class="contact-link-card-grid">
-      <!-- <ContactCard
-                    color="rgba(230,40,55,255)"
-                    second_color="white"
-                    platform="test"
-                    name="name"
-                  /> -->
-    </ul>
-
-    <style></style>
+    </section>
   </main>
+
+  <Footer />
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .contact-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+
+  .contact-header h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  .contact-intro {
+    font-size: 1.2rem;
+    color: rgba(var(--text), 0.8);
+    margin: 0 auto;
+    max-width: 60ch;
+  }
+
+  section {
+    padding: 2.5rem;
+    border-radius: 16px;
+  }
+
+  section h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+  }
+
+  .contact-methods,
+  .socials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .socials-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* Form Styles */
+  .contact-form {
+    margin-top: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: rgba(var(--text), 0.9);
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(var(--card-bg), 0.5);
+    border: 1px solid rgba(var(--text), 0.1);
+    border-radius: 8px;
+    color: rgb(var(--text));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: rgba(var(--accent), 0.5);
+    box-shadow: 0 0 0 2px rgba(var(--accent), 0.1);
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .submit-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(var(--accent), 0.2);
+    color: rgb(var(--text));
+    border: 1px solid rgba(var(--accent), 0.3);
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+
+  .submit-button:hover {
+    background: rgba(var(--accent), 0.3);
+    transform: translateY(-2px);
+  }
+
+  .button-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .submit-button:hover .button-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .socials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Simple form handling - you could replace this with actual form submission
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contact-form') as HTMLFormElement;
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thanks for your message! This is just a demo - in a real site this would send your message.');
+        form.reset();
+      });
+    }
+  });
+</script>

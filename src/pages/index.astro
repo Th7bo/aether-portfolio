@@ -1,89 +1,129 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Hamburger from "../components/Hamburger.astro";
 import SmallCard from "../components/SmallCard.astro";
+import Navigation from "../components/Navigation.astro";
+import HeroSection from "../components/HeroSection.astro";
+import SkillBar from "../components/SkillBar.astro";
+import Timeline from "../components/Timeline.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Thibo | Home">
+  <Navigation activeLink="/" />
+  
   <main>
-    <header>
-      <nav>
-        <Hamburger />
-        <ul role="list" class="navbar-card-grid">
-          <div class="nav-links">
-            <Navbar href="/" title="Home" />
-            <Navbar href="/projects" title="Projects" />
-            <Navbar href="/contact" title="Contact" />
-          </div>
-        </ul>
-      </nav>
-    </header>
-    <h1 class="left">hey i'm <span class="text-gradient">th7bo</span>!</h1>
-    <h2>
-      <strong><span class="dollar">$</span></strong> about me
-    </h2>
-    <p>
-      im thibo as you might have noticed, im currently 18 years old and studying
-      software development in Belgium
-    </p>
-    <p>
-      i enjoy dipping my toes in software development, server development and
-      other tech related things
-    </p>
+    <HeroSection />
 
-    <h2>
-      <strong><span class="dollar">$</span></strong> skills
-    </h2>
-    <p>Programming languages:</p>
-    <ul role="list" class="small-link-card-grid">
-      <SmallCard
-        color="rgba(231,73,105,255)"
-        second_color="rgba(120,78,249,255)"
-        title="Kotlin"
-      />
-      <SmallCard
-        color="rgba(230,40,55,255)"
-        second_color="white"
-        title="Java"
-      />
-      <SmallCard
-        color="rgba(240,219,78,255)"
-        second_color="rgba(51,51,48,255)"
-        title="JavaScript"
-      />
-      <SmallCard
-        color="rgba(37,36,37,255)"
-        second_color="rgba(254,158,4,255)"
-        title="Skript"
-      />
-    </ul>
-    <p>Tech & tools:</p>
-    <ul role="list" class="small-link-card-grid">
-      <SmallCard
-        color="rgba(255,125,127,255)"
-        second_color="rgba(127,128,255,255)"
-        title="EndeavourOS"
-      />
-      <SmallCard
-        color="rgba(222,74,55,255)"
-        second_color="rgba(222,74,55,255)"
-        title="Git"
-      />
-      <SmallCard
-        color="rgba(9,156,236,255)"
-        second_color="rgba(9,156,236,255)"
-        title="Docker"
-      />
-    </ul>
-    <p>Frameworks</p>
-    <ul role="list" class="small-link-card-grid">
-      <SmallCard
-        color="rgba(223,56,113,255)"
-        second_color="rgba(235,63,213,255)"
-        title="Astro"
-      />
-    </ul>
+    <section class="about-section glass" data-animate="fade-in" data-delay="0.2">
+      <h2>
+        <span class="dollar">$</span> about me
+      </h2>
+      <p>
+        I'm thibo as you might have noticed, I'm currently 18 years old and studying
+        software development in Belgium.
+      </p>
+      <p>
+        I enjoy dipping my toes in software development, server development and
+        other tech related things. My passion is creating engaging Minecraft servers and
+        developing custom plugins to enhance player experiences.
+      </p>
+    </section>
+
+    <SkillBar categories={[
+      {
+        name: "Languages",
+        skills: [
+          { name: "JavaScript", level: 90, color: "#f7df1e" },
+          { name: "Python", level: 80, color: "#366b98" },
+          { name: "Java", level: 85, color: "#ea2d2e" },
+          { name: "Kotlin", level: 80, color: "#7F52FF" },
+          { name: "C#", level: 75, color: "#9b4f96" },
+        ]
+      },
+      {
+        name: "Backend",
+        skills: [
+          { name: "Node.js", level: 90, color: "#68a063" },
+          { name: "REST APIs", level: 90, color: "#aa292e" },
+        ]
+      },
+      {
+        name: "Database & Cloud",
+        skills: [
+          { name: "MongoDB", level: 85, color: "#3FA037" },
+          { name: "PostgreSQL", level: 80, color: "#336791" },
+          { name: "MySQL", level: 85, color: "#4479A1" },
+          { name: "Docker", level: 80, color: "#2496ED" },
+          { name: "Kubernetes", level: 65, color: "#326CE5" },
+        ]
+      },
+      {
+        name: "Tools & Others",
+        skills: [
+          { name: "Git", level: 90, color: "#F05032" },
+          { name: "GitHub/GitLab", level: 85, color: "#ffffff" },
+          { name: "VS Code", level: 95, color: "#007ACC" },
+        ]
+      }
+    ]} />
+
+    <section class="experience-section glass" data-animate="fade-in" data-delay="0.4">
+      <h2>
+        <span class="dollar">$</span> experience
+      </h2>
+      
+      <Timeline items={[
+        {
+          title: "Lead Developer at EssenceMC",
+          date: "2024 - Present",
+          description: "Developing a comprehensive Minecraft network with specialized game modes including generators and dungeons. Currently implementing a custom prison server with a dynamic module system for loading custom JAR modules. Architected MongoDB integrations with custom repositories and datastores for efficient player data management.",
+          tags: ["Kotlin", "MongoDB", "Module System", "Java", "Game Development"]
+        },
+        {
+          title: "Lead Developer at Depthful",
+          date: "2022 - Present",
+          description: "Leading development of a custom Minecraft prison server using Kotlin, MongoDB, and JDA. Implemented custom plugins and game mechanics to enhance player experience.",
+          tags: ["Kotlin", "MongoDB", "Plugin Development"]
+        },
+        {
+          title: "Core Developer at The Universe",
+          date: "2021 - 2022",
+          description: "Assisted in transitioning from Skript to Java as the server gained popularity on TikTok. Created scalable network architecture for handling increased player load.",
+          tags: ["Java", "Network Architecture", "Optimization"]
+        },
+        {
+          title: "Plugin Developer at HeatGens",
+          date: "2023 - 2023",
+          description: "Refactoring plugins from 1.19.4 to 1.21, focusing on optimizing NMS and packet handling.",
+          tags: ["Java", "NMS", "Spigot API"]
+        }
+      ]} />
+    </section>
   </main>
+
+  <Footer />
 </Layout>
-<style></style>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  section {
+    padding: 2.5rem;
+    border-radius: 16px;
+  }
+
+  section h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--accent-light));
+  }
+</style>

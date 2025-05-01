@@ -10,17 +10,76 @@ interface Props {
 const { color, platform, name, second_color, link } = Astro.props;
 ---
 
-<div class="flex flex-col">
-  <div class="relative">
-    <a
-      href=`${link}`
-      class="flex contact-card"
-      style=`color:${color};background-color:${color}33`
-      target="_blank"
-    >
-      <span>{platform}</span><span
-        style=`color:${second_color};font-weight: 600;`>{name}</span
-      >
-    </a>
-  </div>
+<div class="contact-card-container" data-animate="fade-in">
+  <a
+    href={link}
+    class="contact-card glass"
+    style={`--card-color:${color}; --card-secondary:${second_color}`}
+    target="_blank"
+  >
+    <span class="platform">{platform}</span>
+    <span class="username">{name}</span>
+  </a>
 </div>
+
+<style>
+  .contact-card-container {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .contact-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    border-left: 3px solid var(--card-color);
+    background: rgba(var(--card-bg), 0.2);
+  }
+
+  .contact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      var(--card-color),
+      var(--card-secondary)
+    );
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+  }
+
+  .platform {
+    font-weight: 500;
+    color: var(--card-color);
+  }
+
+  .username {
+    font-weight: 600;
+    color: var(--card-secondary);
+  }
+
+  .contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  }
+
+  .contact-card:hover::before {
+    opacity: 0.2;
+  }
+
+  @media (max-width: 768px) {
+    .contact-card-container {
+      max-width: 100%;
+    }
+  }
+</style>

@@ -1,84 +1,181 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Navbar from "../components/Navbar.astro";
-import Hamburger from "../components/Hamburger.astro";
+import Navigation from "../components/Navigation.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Thibo | Projects">
+  <Navigation activeLink="/projects" />
+  
   <main>
-    <header>
-      <nav>
-        <Hamburger />
-        <ul role="list" class="navbar-card-grid">
-          <div class="nav-links">
-            <Navbar href="/" title="Home" />
-            <Navbar href="/projects" title="Projects" />
-            <Navbar href="/contact" title="Contact" />
-          </div>
-        </ul>
-      </nav>
-    </header>
-    <h1 class="left">hey i'm <span class="text-gradient">th7bo</span>!</h1>
-    <h2>
-      <strong><span class="dollar">$</span></strong> projects
-    </h2>
-    <p>
-      Welcome to "my" projects page, here are some servers I've been dev / admin
-      on and some tech thingies I've made.
-    </p>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="https://github.com/Th7bo/Quizzer"
-        title="Quizzer plugin"
-        body="This was a plugin Devroom request me to make to become a freelancer on their platform specializing in plugin development."
-      />
-      <Card
-        href="https://discord.gg/7fwgEYcPRn"
-        title="Depthful"
-        body="My own prison server made using Kotlin, MongoDB and JDA. Everything on this server is custom coded and fine-tuned to the server, the plugins use lots of managers to easily expand the gameplay inside the server and to shorten the time needed to code repetitive things."
-      />
-      <Card
-        href="https://discord.gg/qrpDquRYhA"
-        title="Cloods"
-        body=`This is also a server I own, it's a skymining server so you start out with some gear and gather resources on individual island to then upgrade your gear. After you've gotten to Diamond gear, you can "rebirth" to the next world where everything is more grindy but the custom enchants pay off.`
-      />
-      <Card
-        href="https://discord.gg/theuniverse"
-        title="The Universe"
-        body=`I used to be a core developer for this server assisting in the switch from Skript to Java as the server has blew up on TikTok and skript wasn't really fit for the amount of players. We immediately knew that we needed multiple servers to accommodate all of the players, thus we made an easy to use scalable network including proxy plugins.`
-      />
-      <Card
-        href="https://discord.gg/Rs3kGQVrgd"
-        title="Embox"
-        body='This is a server made using skript that aims to provide a factions like experience but contained in a small bedrock world with "money generators". Base raiding and defending is a big deal here since you can raid anyone, anywhere, any time so grinding and being prepared is key.'
-      />
-      <Card
-        href="https://discord.gg/uAcAhhPHS2"
-        title="HeatGens"
-        body="I recently became a developer on this server to refactor plugins from 1.19.4 to 1.21 which heavily relied on nms and packets."
-      />
+    <section class="projects-header" data-animate="fade-in">
+      <h1>My <span class="text-gradient">Projects</span></h1>
+      <p class="projects-intro">
+        Welcome to my projects showcase. Here are some servers I've been a developer or admin for, 
+        along with some technical projects I've created.
+      </p>
+    </section>
 
-      <Card
-        href="https://discord.gg/D7fSvFuDRe"
-        title="fClick"
-        body=`The current fClick server is a revamp to relive nostalgia from the original fClick server that released in 2020.`
-      />
-      <Card
-        href="https://discord.gg/BenDsSx6v3"
-        title="CubeClicker"
-        body=`This server is based around upgrading your clicker to do more damage to blocks in areas from which you get coins. With these coins you can get new pets, clickers, areas, ...`
-      />
-      <Card
-        href="https://discord.gg/dXCX8fsHez"
-        title="RiftSkies"
-        body=`This server too is a SkyMining server, but has been refined to retain lots of players, often peaking at 70+ players.`
-      />
-      <Card
-        href="https://discord.gg/4gBEvrD2eq"
-        title="Outerstars"
-        body=`This server is based around Space Discovery using a custom texture pack and multiple worlds to provide an immersive play world and lore. Using custom chat systems and shaders we can provide interactive NPC/player conversations. Sadly this has been disbanded..`
-      />
-    </ul>
+    <section class="featured-projects" data-animate="fade-in" data-delay="0.2">
+      <h2><span class="dollar">$</span> featured projects</h2>
+      
+      <div class="featured-grid">
+        <ProjectCard
+          title="EssenceMC"
+          description="Lead developer implementing a sophisticated architecture with MongoDB integration, custom JAR loaders, and a proprietary dynamic module system in Java. The system allows for runtime loading and hot-swapping of components without server restarts."
+          href="https://essencemc.net"
+          tags={["Java", "MongoDB", "Dynamic Modules", "Custom Architecture"]}
+        />
+        
+        <ProjectCard
+          title="Depthful"
+          description="My own prison server made using Kotlin, MongoDB and JDA. Everything on this server is custom coded and fine-tuned for optimal gameplay experience."
+          href="https://discord.gg/7fwgEYcPRn"
+          tags={["Kotlin", "MongoDB", "JDA", "Custom Plugins"]}
+        />
+        
+        <ProjectCard
+          title="The Universe"
+          description="Core developer for this server assisting in the switch from Skript to Java as the server gained TikTok popularity. Created a scalable network architecture for multiple servers."
+          href="https://discord.gg/theuniverse"
+          tags={["Java", "Network Architecture", "Performance Optimization"]}
+        />
+      </div>
+    </section>
+
+    <section class="all-projects glass" data-animate="fade-in" data-delay="0.3">
+      <h2><span class="dollar">$</span> all projects</h2>
+      
+      <div class="projects-grid">
+        <ProjectCard
+          title="Quizzer Plugin"
+          description="A plugin commissioned by Devroom as part of their freelancer qualification process, specializing in plugin development."
+          href="https://github.com/Th7bo/Quizzer"
+          tags={["Java", "Spigot API", "Quiz System"]}
+        />
+        
+        <ProjectCard
+          title="Cloods"
+          description="A skymining server where players gather resources on individual islands to upgrade their gear, with a rebirth system for progression."
+          href="https://discord.gg/qrpDquRYhA"
+          tags={["Java", "Custom Enchants", "Progression System"]}
+        />
+        
+        <ProjectCard
+          title="Embox"
+          description="A Skript-based server providing a factions-like experience contained in a small bedrock world with money generators and base raiding mechanics."
+          href="https://discord.gg/Rs3kGQVrgd"
+          tags={["Skript", "Factions", "PvP"]}
+        />
+        
+        <ProjectCard
+          title="HeatGens"
+          description="Recently joined as a developer to refactor plugins from 1.19.4 to 1.21, with heavy focus on NMS and packet handling."
+          href="https://discord.gg/uAcAhhPHS2"
+          tags={["Java", "NMS", "Version Migration"]}
+        />
+        
+        <ProjectCard
+          title="fClick"
+          description="A revamped version of the original 2020 fClick server, recreating the nostalgia while adding modern features."
+          href="https://discord.gg/D7fSvFuDRe"
+          tags={["Java", "Skript", "Legacy Revival"]}
+        />
+        
+        <ProjectCard
+          title="CubeClicker"
+          description="A server based around upgrading your clicker to do more damage to blocks in areas to earn coins for pets, clickers, and area unlocks."
+          href="https://discord.gg/BenDsSx6v3"
+          tags={["Java", "Progression System", "Economy"]}
+        />
+        
+        <ProjectCard
+          title="RiftSkies"
+          description="A refined SkyMining server optimized for player retention, regularly peaking at 70+ players."
+          href="https://discord.gg/dXCX8fsHez"
+          tags={["Java", "Optimization", "Player Retention"]}
+        />
+        
+        <ProjectCard
+          title="Outerstars"
+          description="An immersive space discovery server using custom texture packs and multiple worlds. Featured interactive NPC/player conversations through custom chat systems."
+          href="https://discord.gg/4gBEvrD2eq"
+          tags={["Java", "Custom Textures", "Immersive World"]}
+        />
+      </div>
+    </section>
   </main>
+
+  <Footer />
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-top: 2rem;
+  }
+
+  .projects-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto 2rem;
+  }
+
+  .projects-header h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  .projects-intro {
+    font-size: 1.2rem;
+    color: rgba(var(--text), 0.8);
+    margin: 0 auto;
+    max-width: 60ch;
+  }
+
+  section h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .glass {
+    padding: 2.5rem;
+    border-radius: 16px;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .featured-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    main {
+      padding-top: 1rem;
+    }
+    
+    .projects-header {
+      margin-top: 4rem;
+    }
+  }
+</style>

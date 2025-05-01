@@ -1,0 +1,208 @@
+---
+interface TimelineItem {
+  title: string;
+  date: string;
+  description: string;
+  tags?: string[];
+}
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="timeline-container">
+  {items.map((item, index) => (
+    <div class="timeline-item" data-animate="fade-in" data-delay={0.1 * index}>
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">{item.date}</div>
+      <div class="timeline-content glass">
+        <h3 class="timeline-title">{item.title}</h3>
+        <p class="timeline-description">{item.description}</p>
+        {item.tags && (
+          <div class="timeline-tags">
+            {item.tags.map(tag => (
+              <span class="timeline-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem 0;
+  }
+
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background: rgba(var(--accent), 0.3);
+    left: 50px;
+    top: 0;
+    z-index: 1;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 80px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 44px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: rgb(var(--accent));
+    border-radius: 50%;
+    transform: translateY(-7px);
+    z-index: 3;
+  }
+
+  .timeline-date {
+    position: absolute;
+    left: 65px;
+    top: -10px;
+    color: rgba(var(--text), 0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 3;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+  }
+
+  .timeline-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .timeline-description {
+    margin-bottom: 1rem;
+    color: rgba(var(--text), 0.8);
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+
+  .timeline-tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(var(--accent), 0.15);
+    color: rgb(var(--accent-light));
+    border-radius: 20px;
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  /* Medium screens */
+  @media (max-width: 900px) {
+    .timeline-container {
+      max-width: 600px;
+    }
+  }
+
+  /* Small screens */
+  @media (max-width: 768px) {
+    .timeline-container::before {
+      left: 30px;
+    }
+
+    .timeline-item {
+      padding-left: 60px;
+    }
+
+    .timeline-dot {
+      left: 24px;
+    }
+
+    .timeline-date {
+      left: 45px;
+      font-size: 0.8rem;
+    }
+    
+    .timeline-content {
+      padding: 1.2rem;
+    }
+    
+    .timeline-title {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .timeline-container {
+      padding: 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    
+    .timeline-container::before {
+      left: 20px;
+    }
+    
+    .timeline-item {
+      padding-left: 40px;
+      margin-bottom: 2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-dot {
+      left: 14px;
+      width: 12px;
+      height: 12px;
+    }
+    
+    .timeline-date {
+      left: 35px;
+      font-size: 0.75rem;
+    }
+    
+    .timeline-content {
+      padding: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-description {
+      font-size: 0.9rem;
+    }
+    
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      width: 100%;
+    }
+    
+    .timeline-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      white-space: nowrap;
+    }
+  }
+</style> 

@@ -1,5 +1,98 @@
-<div class="hamburger">
-  <span class="line" class="text-gradient"></span>
-  <span class="line" class="text-gradient"></span>
-  <span class="line" class="text-gradient"></span>
-</div>
+<button class="hamburger">
+  <span class="line"></span>
+  <span class="line"></span>
+  <span class="line"></span>
+</button>
+
+<style>
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .line {
+    width: 2rem;
+    height: 0.25rem;
+    background: rgba(var(--text), 0.8);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  .hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg);
+    background: rgba(var(--text), 1);
+  }
+
+  .hamburger.active .line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  .hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg);
+    background: rgba(var(--text), 1);
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (!hamburger || !navLinks) {
+      console.error('Navigation elements not found');
+      return;
+    }
+
+    // Toggle menu on hamburger click
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle("active");
+      navLinks.classList.toggle("expanded");
+      
+      // Toggle body scroll lock
+      document.body.classList.toggle('no-scroll');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains("expanded")) {
+          document.body.classList.remove('no-scroll');
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("expanded");
+        }
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      
+      if (
+        navLinks.classList.contains("expanded") && 
+        !target.closest('.hamburger') && 
+        !target.closest('.nav-links')
+      ) {
+        document.body.classList.remove('no-scroll');
+        hamburger.classList.remove("active");
+        navLinks.classList.remove("expanded");
+      }
+    });
+  });
+</script>

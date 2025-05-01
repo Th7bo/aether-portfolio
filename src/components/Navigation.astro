@@ -1,0 +1,179 @@
+---
+import Navbar from "./Navbar.astro";
+import Hamburger from "./Hamburger.astro";
+
+interface Props {
+  activeLink?: string;
+}
+
+const { activeLink } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="header-container glass-dark">
+    <div class="logo">
+      <a href="/" class="logo-text">th<span class="text-gradient">7</span>bo</a>
+    </div>
+    <nav>
+      <Hamburger />
+      <div class="nav-links">
+        <div class="popup-header">
+          <h2 class="text-gradient">Navigation</h2>
+          <div class="popup-subtitle">Explore the site</div>
+        </div>
+        <div class="nav-menu">
+          <Navbar href="/" title="Home" data-index="0" isActive={activeLink === "/"} />
+          <Navbar href="/projects" title="Projects" data-index="1" isActive={activeLink === "/projects"} />
+          <Navbar href="/contact" title="Contact" data-index="2" isActive={activeLink === "/contact"} />
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-bottom: 2rem;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: var(--z-nav);
+  }
+
+  .logo-text {
+    text-decoration: none;
+    color: rgb(var(--text));
+    transition: var(--transition-fast);
+  }
+
+  .logo-text:hover {
+    opacity: 0.9;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .popup-header {
+    display: none;
+    margin-bottom: 2rem;
+  }
+  
+  .popup-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .popup-subtitle {
+    font-size: 1.1rem;
+    color: rgba(var(--text), 0.7);
+    margin-bottom: 1rem;
+  }
+  
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 1rem;
+      position: relative;
+      z-index: calc(var(--z-modal) + 10);
+    }
+    
+    nav {
+      position: static;
+    }
+    
+    .popup-header {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .nav-menu {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Simplified event handling for the menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    setupNavigation();
+  });
+  
+  function setupNavigation() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+    
+    if (!hamburger || !navLinks) return;
+    
+    // Set item index for staggered animation
+    navItems.forEach((item, index) => {
+      (item as HTMLElement).style.setProperty('--item-index', index.toString());
+    });
+    
+    // Toggle menu visibility
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('expanded');
+      
+      if (navLinks.classList.contains('expanded')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Close menu when clicking a navigation link
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('expanded');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Close and reset menu on resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 769) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('expanded');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  
+  // Clean up on page transitions
+  document.addEventListener('astro:page-load', () => {
+    setupNavigation();
+  });
+</script>

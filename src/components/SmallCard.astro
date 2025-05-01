@@ -8,68 +8,68 @@ interface Props {
 const { color, title, second_color } = Astro.props;
 ---
 
-<li class="small-link-card">
-  <a>
-    <h2>
-      {title}
-    </h2>
-  </a>
-</li>
-<style define:vars={{ color, second_color }}>
-  .small-link-card {
+<div
+  class="skill-card glass"
+  style={`--card-color:${color}; --card-secondary:${second_color}`}
+  data-animate="fade-in"
+>
+  <div class="skill-content">
+    <h3>{title}</h3>
+  </div>
+</div>
+
+<style>
+  .skill-card {
     list-style: none;
-    display: flex;
-    padding: 1px;
-    /* background-color: #23262d; */
-    background-size: 400%;
-    border-radius: 7px;
-    /* background-position: 100%; */
-    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-    background-image: linear-gradient(
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    transition: var(--transition-fast);
+  }
+
+  .skill-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
       45deg,
-      var(--color),
-      var(--second_color) 30%,
-      white 60%
+      var(--card-color),
+      var(--card-secondary) 70%
     );
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
+    z-index: -1;
   }
 
-  .small-link-card > a {
-    width: 100%;
-    height: auto;
-    text-decoration: none;
-    line-height: 1.4;
-    padding: calc(1.5rem - 1px);
-    border-radius: 8px;
-    color: white;
-    background-color: #23262d;
-
-    opacity: 0.8;
+  .skill-content {
+    padding: 0.8rem 1.2rem;
+    background-color: rgba(var(--card-bg), 0.3);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
   }
 
-  h2 {
+  h3 {
     margin: 0;
-    font-size: 1.25rem;
-    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
   }
 
-  p {
-    margin-top: 0.5rem;
-    margin-bottom: 0;
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
   }
 
-  .small-link-card:is(:hover, :focus-within) {
-    background-position: 0;
-    background-position: 20%;
-    /* background-image: linear-gradient(
-          45deg,
-          var(--color),
-          var(--second_color) 30%,
-          white 60%
-        ); */
+  .skill-card:hover::before {
+    opacity: 0.25;
   }
 
-  .small-link-card:is(:hover, :focus-within) h2 {
-    color: rgb(var(--color));
+  .skill-card:hover h3 {
+    color: var(--card-color);
   }
 </style>

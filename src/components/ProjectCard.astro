@@ -1,0 +1,145 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
+  tags?: string[];
+}
+
+const { title, description, href, image, tags = [] } = Astro.props;
+
+// Default background gradients for cards without images
+const gradients = [
+  "linear-gradient(135deg, #6366f1, #a855f7)",
+  "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+  "linear-gradient(135deg, #0ea5e9, #6366f1)",
+  "linear-gradient(135deg, #10b981, #3b82f6)",
+  "linear-gradient(135deg, #f59e0b, #ef4444)",
+  "linear-gradient(135deg, #8b5cf6, #ec4899)",
+];
+
+const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+---
+
+<div class="project-card glass" data-animate="fade-in">
+  <a href={href} target="_blank" class="project-link">
+    <div class="project-image" style={`background-image: ${image ? `url(${image})` : randomGradient}`}>
+      {!image && <span class="project-icon">{title.charAt(0)}</span>}
+    </div>
+    <div class="project-content">
+      <h3 class="project-title">{title}</h3>
+      <p class="project-description">{description}</p>
+      
+      {tags.length > 0 && (
+        <div class="project-tags">
+          {tags.map(tag => (
+            <span class="project-tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  </a>
+</div>
+
+<style>
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .project-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: rgb(var(--text));
+  }
+
+  .project-image {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-icon {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .project-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .project-description {
+    margin: 0 0 1rem 0;
+    color: rgba(var(--text), 0.8);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .project-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(var(--accent), 0.15);
+    color: rgb(var(--accent-light));
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 480px) {
+    .project-tags {
+      gap: 0.4rem;
+    }
+    
+    .project-tag {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .project-content {
+      padding: 1.2rem;
+    }
+    
+    .project-description {
+      font-size: 0.9rem;
+    }
+  }
+</style> 

@@ -11,12 +11,17 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^4.2.7",
     "@astrojs/ts-plugin": "^1.10.3",
     "astro": "^4.16.7",
+    "framer-motion": "^12.9.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "sharp": "^0.34.1"
   }
 }

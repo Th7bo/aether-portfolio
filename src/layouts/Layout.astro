@@ -17,6 +17,9 @@ import "../styles/global.css";
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <meta property="og:url" content="https://th7bo.com" />
     <meta
@@ -25,7 +28,7 @@ import "../styles/global.css";
     />
     <meta property="og:title" content="th7bo's corner" />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#FD6E7E" />
+    <meta name="theme-color" content="#8A4EFF" />
 
     <meta name="og:image" itemprop="image" content="../images/image.png" />
     <meta name="generator" content={Astro.generator} />
@@ -35,49 +38,84 @@ import "../styles/global.css";
     <slot />
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 253, 110, 126;
-    --accent-light: 249, 154, 182;
-    --accent-dark: 248, 73, 73;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-    --accent-gradient-no-white: linear-gradient(
-      45deg,
-      rgb(var(--accent)) 50%,
-      rgb(var(--accent-light))
-    );
-  }
 
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-  }
-
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
 <script>
+  // Import Framer Motion for client-side use
+  import { animate } from 'framer-motion/dom';
+
+  // Initialize animations after the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    // Apply animations to elements with data-animate attribute
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      const animation = el.getAttribute('data-animate');
+      const delay = parseFloat(el.getAttribute('data-delay') || '0');
+      
+      if (animation === 'fade-in') {
+        // Fix for TypeScript error by using type assertion
+        (el as HTMLElement).style.opacity = '0';
+        animate(el, { opacity: 1, y: [20, 0] }, { duration: 0.8, delay });
+      } else if (animation === 'slide-in') {
+        const direction = el.getAttribute('data-direction') || 'left';
+        const x = direction === 'left' ? [-100, 0] : direction === 'right' ? [100, 0] : 0;
+        const y = direction === 'up' ? [100, 0] : direction === 'down' ? [-100, 0] : 0;
+        
+        animate(el, { x, y, opacity: [0, 1] }, { duration: 0.8, delay });
+      }
+    });
+
+    // Prevent horizontal scrolling
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    
+    // Ensure proper spacing on mobile to avoid navbar overlap
+    const adjustContentSpacing = () => {
+      const navbar = document.querySelector('nav');
+      if (navbar && window.innerWidth <= 768) {
+        const navHeight = navbar.offsetHeight;
+        document.body.style.paddingTop = `${navHeight}px`;
+      } else if (navbar) {
+        document.body.style.paddingTop = '0';
+      }
+    };
+    
+    adjustContentSpacing();
+    window.addEventListener('resize', adjustContentSpacing);
+  });
+
+  // Hamburger Menu Toggle
   document.querySelector(".hamburger")?.addEventListener("click", () => {
     document.querySelector(".nav-links")?.classList.toggle("expanded");
   });
-  addEventListener("resize", () => {
-    const width = window.innerWidth;
-    if (width >= 636) {
+  
+  // Responsive menu handling
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
       document.querySelector(".nav-links")?.classList.remove("expanded");
     }
   });
 </script>
+
+<style is:global>
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Add padding on mobile to prevent title from going under navbar */
+  @media (max-width: 768px) {
+    body {
+      padding-top: 80px; /* Adjust based on your navbar height */
+    }
+  }
+</style>
