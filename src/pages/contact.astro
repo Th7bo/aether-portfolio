@@ -7,76 +7,60 @@ import Footer from "../components/Footer.astro";
 
 <Layout title="Thibo | Contact">
   <Navigation activeLink="/contact" />
-  
+
   <main>
     <section class="contact-header" data-animate="fade-in">
       <h1>Get in <span class="text-gradient">Touch</span></h1>
       <p class="contact-intro">
-        Feel free to reach out for collaboration opportunities, questions about my projects, 
-        or just to say hello!
+        Feel free to reach out for collaboration opportunities, questions about
+        my projects, or just to say hello!
       </p>
     </section>
 
-    <div class="contact-grid">
-      <section class="contact-section glass" data-animate="fade-in" data-delay="0.2">
-        <h2><span class="dollar">$</span> contact methods</h2>
-        <p>Here's how you can reach me directly:</p>
-        
-        <div class="contact-methods">
-          <ContactCard
-            color="#95a0ff"
-            second_color="#6870b6"
-            platform="Discord"
-            name=".th7"
-            link="https://discordapp.com/users/350275136206667777"
-          />
-          <ContactCard
-            color="#ff9597"
-            second_color="#bd6e70"
-            platform="Mail"
-            name="info@th7bo.com"
-            link="mailto:info@th7bo.com"
-          />
-        </div>
-      </section>
+    <section
+      class="contact-section glass"
+      data-animate="fade-in"
+      data-delay="0.2"
+    >
+      <h2><span class="dollar">$</span> contact methods</h2>
+      <p>Here's how you can reach me directly:</p>
 
-      <section class="contact-form-section glass" data-animate="fade-in" data-delay="0.3">
-        <h2><span class="dollar">$</span> send a message</h2>
-        <p>Or fill out this form to send me a message directly:</p>
-        
-        <form class="contact-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Your email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" class="form-control" placeholder="Message subject" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" class="form-control" placeholder="Your message..." rows="5" required></textarea>
-          </div>
-          
-          <button type="submit" class="submit-button">
-            Send Message
-            <span class="button-arrow">→</span>
-          </button>
-        </form>
-      </section>
-    </div>
+      <div class="contact-methods">
+        <ContactCard
+          color="#95a0ff"
+          second_color="#6870b6"
+          platform="Discord"
+          name=".th7"
+          link="https://discordapp.com/users/350275136206667777"
+        />
+        <ContactCard
+          color="#ff9597"
+          second_color="#bd6e70"
+          platform="Mail"
+          name="me@th7bo.dev"
+          link="mailto:me@th7bo.dev"
+        />
+      </div>
 
-    <section class="socials-section glass" data-animate="fade-in" data-delay="0.4">
+      <div class="contact-info">
+        <h3>Quick Response</h3>
+        <p>I usually respond within 24-48 hours. Please include:</p>
+        <ul class="contact-list">
+          <li>A clear subject line</li>
+          <li>Details about your project/inquiry</li>
+          <li>Any relevant deadlines</li>
+        </ul>
+      </div>
+    </section>
+
+    <section
+      class="socials-section glass"
+      data-animate="fade-in"
+      data-delay="0.4"
+    >
       <h2><span class="dollar">$</span> find me online</h2>
       <p>Connect with me on these platforms:</p>
-      
+
       <div class="socials-grid">
         <ContactCard
           color="#95afff"
@@ -145,6 +129,16 @@ import Footer from "../components/Footer.astro";
     max-width: 60ch;
   }
 
+  .contact-section {
+    padding: 2.5rem;
+    border-radius: 16px;
+  }
+
+  .contact-grid {
+    width: 100%;
+    display: flex;
+  }
+
   section {
     padding: 2.5rem;
     border-radius: 16px;
@@ -161,84 +155,87 @@ import Footer from "../components/Footer.astro";
     gap: 2rem;
   }
 
-  .contact-methods,
-  .socials-grid {
+  .contact-methods {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .socials-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 
-  /* Form Styles */
-  .contact-form {
+  .contact-info {
+    padding: 1.5rem;
+    background: rgba(var(--card-bg), 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(var(--accent), 0.1);
+    margin-top: 2rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: rgb(var(--accent));
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .contact-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+
+  .contact-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgb(var(--accent));
+  }
+
+  .about-content {
     margin-top: 1.5rem;
   }
 
-  .form-group {
-    margin-bottom: 1.5rem;
+  .skills-list h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: rgb(var(--accent));
   }
 
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+    background: rgba(var(--accent), 0.15);
+    border-radius: 6px;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(var(--text), 0.9);
   }
 
-  .form-control {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: rgba(var(--card-bg), 0.5);
-    border: 1px solid rgba(var(--text), 0.1);
-    border-radius: 8px;
-    color: rgb(var(--text));
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    transition: var(--transition-fast);
-  }
-
-  .form-control:focus {
-    outline: none;
-    border-color: rgba(var(--accent), 0.5);
-    box-shadow: 0 0 0 2px rgba(var(--accent), 0.1);
-  }
-
-  textarea.form-control {
-    resize: vertical;
-    min-height: 100px;
-  }
-
-  .submit-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background: rgba(var(--accent), 0.2);
-    color: rgb(var(--text));
-    border: 1px solid rgba(var(--accent), 0.3);
-    border-radius: 8px;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: var(--transition-fast);
-  }
-
-  .submit-button:hover {
-    background: rgba(var(--accent), 0.3);
-    transform: translateY(-2px);
-  }
-
-  .button-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .submit-button:hover .button-arrow {
-    transform: translateX(4px);
+  .collaborate-text {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: rgba(var(--text), 0.8);
   }
 
   @media (max-width: 992px) {
@@ -253,17 +250,3 @@ import Footer from "../components/Footer.astro";
     }
   }
 </style>
-
-<script>
-  // Simple form handling - you could replace this with actual form submission
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.contact-form') as HTMLFormElement;
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thanks for your message! This is just a demo - in a real site this would send your message.');
-        form.reset();
-      });
-    }
-  });
-</script>
