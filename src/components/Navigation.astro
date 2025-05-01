@@ -22,9 +22,24 @@ const { activeLink } = Astro.props;
           <div class="popup-subtitle">Explore the site</div>
         </div>
         <div class="nav-menu">
-          <Navbar href="/" title="Home" data-index="0" isActive={activeLink === "/"} />
-          <Navbar href="/projects" title="Projects" data-index="1" isActive={activeLink === "/projects"} />
-          <Navbar href="/contact" title="Contact" data-index="2" isActive={activeLink === "/contact"} />
+          <Navbar
+            href="/"
+            title="Home"
+            data-index="0"
+            isActive={activeLink === "/"}
+          />
+          <Navbar
+            href="/projects"
+            title="Projects"
+            data-index="1"
+            isActive={activeLink === "/projects"}
+          />
+          <Navbar
+            href="/contact"
+            title="Contact"
+            data-index="2"
+            isActive={activeLink === "/contact"}
+          />
         </div>
       </div>
     </nav>
@@ -73,25 +88,25 @@ const { activeLink } = Astro.props;
     align-items: center;
     gap: 1rem;
   }
-  
+
   .popup-header {
     display: none;
     margin-bottom: 2rem;
   }
-  
+
   .popup-header h2 {
     font-size: 2.5rem;
     font-weight: 700;
     margin: 0;
     margin-bottom: 0.5rem;
   }
-  
+
   .popup-subtitle {
     font-size: 1.1rem;
     color: rgba(var(--text), 0.7);
     margin-bottom: 1rem;
   }
-  
+
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -105,16 +120,16 @@ const { activeLink } = Astro.props;
       position: relative;
       z-index: calc(var(--z-modal) + 10);
     }
-    
+
     nav {
       position: static;
     }
-    
+
     .popup-header {
       display: block;
     }
   }
-  
+
   @media (min-width: 769px) {
     .nav-menu {
       flex-direction: row;
@@ -125,55 +140,61 @@ const { activeLink } = Astro.props;
 
 <script>
   // Simplified event handling for the menu toggle
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     setupNavigation();
   });
-  
+
   function setupNavigation() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a');
-    
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    const navItems = document.querySelectorAll(".nav-links a");
+
     if (!hamburger || !navLinks) return;
-    
+
     // Set item index for staggered animation
     navItems.forEach((item, index) => {
-      (item as HTMLElement).style.setProperty('--item-index', index.toString());
+      (item as HTMLElement).style.setProperty("--item-index", index.toString());
     });
-    
+
     // Toggle menu visibility
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('expanded');
-      
-      if (navLinks.classList.contains('expanded')) {
-        document.body.style.overflow = 'hidden';
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navLinks.classList.toggle("expanded");
+      document.body.classList.toggle("menu-open");
+
+      if (navLinks.classList.contains("expanded")) {
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = '';
+        document.body.style.overflow = "auto";
+        document.body.style.overflowX = "hidden";
       }
     });
-    
+
     // Close menu when clicking a navigation link
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('expanded');
-        document.body.style.overflow = '';
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navLinks.classList.remove("expanded");
+        document.body.classList.remove("menu-open");
+        document.body.style.overflow = "auto";
+        document.body.style.overflowX = "hidden";
       });
     });
-    
+
     // Close and reset menu on resize
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       if (window.innerWidth >= 769) {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('expanded');
-        document.body.style.overflow = '';
+        hamburger.classList.remove("active");
+        navLinks.classList.remove("expanded");
+        document.body.classList.remove("menu-open");
+        document.body.style.overflow = "auto";
+        document.body.style.overflowX = "hidden";
       }
     });
   }
-  
+
   // Clean up on page transitions
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     setupNavigation();
   });
 </script>

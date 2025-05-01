@@ -1,4 +1,4 @@
-<button class="hamburger">
+<button class="hamburger" aria-label="Toggle menu">
   <span class="line"></span>
   <span class="line"></span>
   <span class="line"></span>
@@ -15,7 +15,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 2000; /* Higher z-index to stay above overlay */
+    position: relative;
   }
 
   .line {
@@ -51,47 +52,78 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
     if (!hamburger || !navLinks) {
-      console.error('Navigation elements not found');
+      console.error("Navigation elements not found");
       return;
     }
 
     // Toggle menu on hamburger click
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       navLinks.classList.toggle("expanded");
-      
+
+      // Add menu-open class to body to control the overlay
+      document.body.classList.toggle("menu-open");
+
       // Toggle body scroll lock
-      document.body.classList.toggle('no-scroll');
+      document.body.classList.toggle("no-scroll");
+
+      // Lock scroll position
+      if (document.body.classList.contains("no-scroll")) {
+        document.body.style.top = `-${window.scrollY}px`;
+      } else {
+        // Restore scroll position
+        const scrollY = document.body.style.top;
+        document.body.style.top = "";
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
     });
 
     // Close menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
         if (navLinks.classList.contains("expanded")) {
-          document.body.classList.remove('no-scroll');
+          // Restore scroll position
+          const scrollY = document.body.style.top;
+          document.body.style.top = "";
+
+          // Remove classes
+          document.body.classList.remove("no-scroll");
+          document.body.classList.remove("menu-open");
           hamburger.classList.remove("active");
           navLinks.classList.remove("expanded");
+
+          // Restore scroll position
+          window.scrollTo(0, parseInt(scrollY || "0") * -1);
         }
       });
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
+    document.addEventListener("click", (event) => {
       const target = event.target as HTMLElement;
-      
+
       if (
-        navLinks.classList.contains("expanded") && 
-        !target.closest('.hamburger') && 
-        !target.closest('.nav-links')
+        navLinks.classList.contains("expanded") &&
+        !target.closest(".hamburger") &&
+        !target.closest(".nav-links")
       ) {
-        document.body.classList.remove('no-scroll');
+        // Restore scroll position
+        const scrollY = document.body.style.top;
+        document.body.style.top = "";
+
+        // Remove classes
+        document.body.classList.remove("no-scroll");
+        document.body.classList.remove("menu-open");
         hamburger.classList.remove("active");
         navLinks.classList.remove("expanded");
+
+        // Restore scroll position
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
       }
     });
   });

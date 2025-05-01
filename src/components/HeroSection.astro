@@ -12,9 +12,7 @@
           View My Projects
           <span class="arrow">→</span>
         </a>
-        <a href="/contact" class="cta-button-secondary">
-          Contact Me
-        </a>
+        <a href="/contact" class="cta-button-secondary"> Contact Me </a>
       </div>
     </div>
     <div class="hero-image-wrapper" data-animate="fade-in" data-delay="0.3">
@@ -22,11 +20,11 @@
         <div class="hero-image glass">
           <div class="avatar-container">
             <div class="avatar-placeholder-icon">TH</div>
-            <img 
-              src="/avatar.webp" 
-              alt="Avatar" 
+            <img
+              src="/avatar.webp"
+              alt="Avatar"
               class="avatar-image"
-              width="180" 
+              width="180"
               height="180"
               fetchpriority="high"
               loading="eager"
@@ -34,13 +32,25 @@
             />
           </div>
         </div>
-        <div class="tech-badge java-badge glass" data-animate="fade-in" data-delay="0.5">
+        <div
+          class="tech-badge java-badge glass"
+          data-animate="fade-in"
+          data-delay="0.5"
+        >
           <span>Java</span>
         </div>
-        <div class="tech-badge kotlin-badge glass" data-animate="fade-in" data-delay="0.6">
+        <div
+          class="tech-badge kotlin-badge glass"
+          data-animate="fade-in"
+          data-delay="0.6"
+        >
           <span>Kotlin</span>
         </div>
-        <div class="tech-badge mongo-badge glass" data-animate="fade-in" data-delay="0.7">
+        <div
+          class="tech-badge mongo-badge glass"
+          data-animate="fade-in"
+          data-delay="0.7"
+        >
           <span>MongoDB</span>
         </div>
       </div>
@@ -59,6 +69,7 @@
     z-index: var(--z-content);
     overflow-x: hidden;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .hero-content {
@@ -67,9 +78,11 @@
     justify-content: space-between;
     gap: 2rem;
     width: 100%;
-    max-width: 100%;
+    max-width: 1000px;
     position: relative;
     margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
 
   .hero-text {
@@ -172,7 +185,7 @@
     width: 180px;
     height: 180px;
   }
-  
+
   .avatar-placeholder-icon {
     position: absolute;
     width: 180px;
@@ -180,7 +193,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(var(--accent), 0.7), rgba(var(--accent-light), 0.7));
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent), 0.7),
+      rgba(var(--accent-light), 0.7)
+    );
     border-radius: 50%;
     font-size: 4rem;
     font-weight: 700;
@@ -193,7 +210,7 @@
     z-index: 1;
     transition: opacity 0.3s ease;
   }
-  
+
   .avatar-image {
     width: 180px;
     height: 180px;
@@ -216,26 +233,41 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
   }
-  
+
   .java-badge {
     top: 30px;
     right: -10px;
   }
-  
+
   .kotlin-badge {
     top: 180px;
     left: -10px;
   }
-  
+
   .mongo-badge {
     bottom: 30px;
     right: -10px;
   }
 
   @media (max-width: 768px) {
+    .hero-section {
+      padding: 1rem 0 2rem 0;
+      min-height: auto;
+    }
+
     .hero-content {
       flex-direction: column;
       text-align: center;
+      gap: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 7vw, 3.5rem);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 4vw, 1.25rem);
+      margin: 0 auto 1.5rem;
     }
 
     .hero-cta {
@@ -243,7 +275,17 @@
     }
 
     .hero-image-wrapper {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-image-container {
+      width: 250px;
+      height: 250px;
+    }
+
+    .hero-image {
+      width: 250px;
+      height: 250px;
     }
 
     .tech-badge {
@@ -251,7 +293,8 @@
     }
   }
 
-  :global(body), :global(html) {
+  :global(body),
+  :global(html) {
     overflow-x: hidden;
     width: 100%;
     position: relative;
@@ -259,11 +302,17 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.documentElement.style.overflowX = 'hidden';
-    document.body.style.overflowX = 'hidden';
+  document.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.style.overflowX = "hidden";
+    document.body.style.overflowX = "hidden";
   });
 </script>
 
 <!-- Preload the avatar image to ensure fast loading -->
-<link rel="preload" href="/avatar.webp" as="image" type="image/webp" fetchpriority="high"> 
+<link
+  rel="preload"
+  href="/avatar.webp"
+  as="image"
+  type="image/webp"
+  fetchpriority="high"
+/>
