@@ -1,7 +1,6 @@
 ---
 interface Skill {
   name: string;
-  level: number; // 0-100
   icon?: string;
   color?: string;
 }
@@ -20,36 +19,33 @@ const defaultCategories: SkillCategory[] = [
   {
     name: "Languages",
     skills: [
-      { name: "JavaScript", level: 90, color: "#f7df1e" },
-      { name: "Python", level: 80, color: "#366b98" },
-      { name: "Java", level: 85, color: "#ea2d2e" },
-      { name: "Kotlin", level: 80, color: "#7F52FF" },
-      { name: "C#", level: 75, color: "#9b4f96" },
+      { name: "JavaScript", color: "#f7df1e" },
+      { name: "Python", color: "#366b98" },
+      { name: "Java", color: "#ea2d2e" },
+      { name: "Kotlin", color: "#7F52FF" },
+      { name: "C#", color: "#9b4f96" },
     ]
   },
   {
     name: "Backend",
     skills: [
-      { name: "Node.js", level: 90, color: "#68a063" },
-      { name: "REST APIs", level: 90, color: "#24292e" },
+      { name: "Node.js", color: "#68a063" },
+      { name: "REST APIs", color: "#24292e" },
     ]
   },
   {
     name: "Database & Cloud",
     skills: [
-      { name: "MongoDB", level: 85, color: "#3FA037" },
-      { name: "PostgreSQL", level: 80, color: "#336791" },
-      { name: "MySQL", level: 85, color: "#4479A1" },
-      { name: "Docker", level: 80, color: "#2496ED" },
-      { name: "Kubernetes", level: 65, color: "#326CE5" },
+      { name: "MongoDB", color: "#3FA037" },
+      { name: "PostgreSQL", color: "#336791" },
+      { name: "MySQL", color: "#4479A1" },
+      { name: "Docker", color: "#2496ED" },
     ]
   },
   {
-    name: "Tools & Others",
+    name: "Tools",
     skills: [
-      { name: "Git", level: 90, color: "#F05032" },
-      { name: "GitHub/GitLab", level: 85, color: "#ffffff" },
-      { name: "VS Code", level: 95, color: "#007ACC" },
+      { name: "Git", color: "#F05032" },
     ]
   }
 ];
@@ -57,7 +53,7 @@ const defaultCategories: SkillCategory[] = [
 const { title = "Skills & Technologies", categories = defaultCategories } = Astro.props;
 ---
 
-<div class="skills-container glass" data-animate="fade-up">
+<div class="skills-container glass" data-animate="fade-up" id="skills">
   <h2 class="skills-title">{title}</h2>
   
   <div class="skills-categories">
@@ -67,15 +63,8 @@ const { title = "Skills & Technologies", categories = defaultCategories } = Astr
         <div class="skills-list">
           {category.skills.map((skill, index) => (
             <div class="skill-item" data-animate="fade-in" data-delay={0.05 * index + 0.1}>
-              <div class="skill-info">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-level">{skill.level}%</span>
-              </div>
-              <div class="skill-bar">
-                <div 
-                  class="skill-progress" 
-                  style={`width: ${skill.level}%; background: ${skill.color || `rgb(var(--accent))`};`}
-                ></div>
+              <div class="skill-pill" style={`background: ${skill.color || `rgb(var(--accent))`};`}>
+                {skill.name}
               </div>
             </div>
           ))}
@@ -114,40 +103,18 @@ const { title = "Skills & Technologies", categories = defaultCategories } = Astr
 
   .skills-list {
     display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
-  .skill-item {
-    width: 100%;
-  }
-
-  .skill-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-  }
-
-  .skill-name {
+  .skill-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     font-weight: 500;
-  }
-
-  .skill-level {
-    color: rgb(var(--accent-light));
-    font-weight: 600;
-  }
-
-  .skill-bar {
-    height: 10px;
-    background-color: rgba(var(--text), 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  .skill-progress {
-    height: 100%;
-    border-radius: 5px;
-    transition: width 1.5s ease-in-out;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(var(--accent), 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
@@ -180,10 +147,6 @@ const { title = "Skills & Technologies", categories = defaultCategories } = Astr
     
     .category-title {
       margin-bottom: 1rem;
-    }
-    
-    .skills-list {
-      gap: 1rem;
     }
   }
 </style>

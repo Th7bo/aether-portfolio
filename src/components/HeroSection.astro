@@ -2,57 +2,17 @@
   <div class="hero-content">
     <div class="hero-text">
       <h1 class="hero-title">
-        hey i'm <span class="text-gradient">th7bo</span>
+        hey i'm <span class="text-gradient">Thibo</span>
       </h1>
       <p class="hero-subtitle" data-animate="fade-in" data-delay="0.2">
-        Software Developer & Minecraft Server Developer
+        Software Developer
       </p>
       <div class="hero-cta" data-animate="fade-in" data-delay="0.4">
-        <a href="/projects" class="cta-button glass">
+        <a href="#projects" class="cta-button glass">
           View My Projects
           <span class="arrow">→</span>
         </a>
-        <a href="/contact" class="cta-button-secondary"> Contact Me </a>
-      </div>
-    </div>
-    <div class="hero-image-wrapper" data-animate="fade-in" data-delay="0.3">
-      <div class="hero-image-container">
-        <div class="hero-image glass">
-          <div class="avatar-container">
-            <div class="avatar-placeholder-icon">TH</div>
-            <img
-              src="/avatar.webp"
-              alt="Avatar"
-              class="avatar-image"
-              width="180"
-              height="180"
-              fetchpriority="high"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-        </div>
-        <div
-          class="tech-badge java-badge glass"
-          data-animate="fade-in"
-          data-delay="0.5"
-        >
-          <span>Java</span>
-        </div>
-        <div
-          class="tech-badge kotlin-badge glass"
-          data-animate="fade-in"
-          data-delay="0.6"
-        >
-          <span>Kotlin</span>
-        </div>
-        <div
-          class="tech-badge mongo-badge glass"
-          data-animate="fade-in"
-          data-delay="0.7"
-        >
-          <span>MongoDB</span>
-        </div>
+        <a href="#contact" class="cta-button-secondary"> Contact Me </a>
       </div>
     </div>
   </div>
@@ -75,8 +35,7 @@
   .hero-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    justify-content: center;
     width: 100%;
     max-width: 1000px;
     position: relative;
@@ -86,7 +45,8 @@
   }
 
   .hero-text {
-    flex: 1;
+    max-width: 600px;
+    text-align: center;
   }
 
   .hero-title {
@@ -154,142 +114,43 @@
     border-color: rgba(var(--text), 0.3);
   }
 
-  .hero-image-wrapper {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .hero-image-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-  }
-
-  .hero-image {
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(var(--card-bg), 0.5);
-    border: 1px solid rgba(var(--accent), 0.2);
-    position: relative;
-    z-index: var(--z-content);
-  }
-
-  .avatar-container {
-    position: relative;
-    width: 180px;
-    height: 180px;
-  }
-
-  .avatar-placeholder-icon {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--accent), 0.7),
-      rgba(var(--accent-light), 0.7)
-    );
-    border-radius: 50%;
-    font-size: 4rem;
-    font-weight: 700;
-    color: rgba(var(--background), 0.9);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 8px 32px rgba(var(--accent), 0.3);
-    opacity: 0;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .avatar-image {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    border-radius: 50%;
-    box-shadow: 0 8px 32px rgba(var(--accent), 0.2);
-    position: relative;
-    z-index: 2;
-  }
-
-  .tech-badge {
-    position: absolute;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    background: rgba(var(--card-bg), 0.8);
-    border: 1px solid rgba(var(--accent), 0.2);
-    z-index: var(--z-content);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-  }
-
-  .java-badge {
-    top: 30px;
-    right: -10px;
-  }
-
-  .kotlin-badge {
-    top: 180px;
-    left: -10px;
-  }
-
-  .mongo-badge {
-    bottom: 30px;
-    right: -10px;
-  }
-
   @media (max-width: 768px) {
     .hero-section {
       padding: 1rem 0 2rem 0;
       min-height: auto;
     }
 
-    .hero-content {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-    }
-
     .hero-title {
-      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-size: 3.5rem;
     }
 
     .hero-subtitle {
-      font-size: clamp(1rem, 4vw, 1.25rem);
+      font-size: 1.3rem;
       margin: 0 auto 1.5rem;
     }
 
     .hero-cta {
       justify-content: center;
     }
-
-    .hero-image-wrapper {
-      margin-top: 1.5rem;
+    
+    .cta-button, .cta-button-secondary {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
     }
+  }
 
-    .hero-image-container {
-      width: 250px;
-      height: 250px;
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 3rem;
     }
-
-    .hero-image {
-      width: 250px;
-      height: 250px;
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
     }
-
-    .tech-badge {
-      display: none;
+    
+    .cta-button, .cta-button-secondary {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
     }
   }
 

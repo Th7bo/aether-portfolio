@@ -22,29 +22,6 @@ const { className = "", animation = "fade-in", delay = 0 } = Astro.props;
     box-shadow: var(--card-shadow);
     border-radius: 16px;
     overflow: hidden;
-    transition: var(--transition-fast);
     padding: 2rem;
-  }
-
-  .glass-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(var(--accent), 0.05), rgba(var(--accent-light), 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-  }
-
-  .glass-container:hover {
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .glass-container:hover::before {
-    opacity: 1;
   }
 </style> 

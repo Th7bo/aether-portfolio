@@ -26,7 +26,6 @@ const { color, title, second_color } = Astro.props;
     overflow: hidden;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    transition: var(--transition-fast);
   }
 
   .skill-card::before {
@@ -42,7 +41,6 @@ const { color, title, second_color } = Astro.props;
       var(--card-secondary) 70%
     );
     opacity: 0.15;
-    transition: opacity 0.3s ease;
     z-index: -1;
   }
 
@@ -57,19 +55,5 @@ const { color, title, second_color } = Astro.props;
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
-    transition: color 0.3s ease;
-  }
-
-  .skill-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
-  }
-
-  .skill-card:hover::before {
-    opacity: 0.25;
-  }
-
-  .skill-card:hover h3 {
-    color: var(--card-color);
   }
 </style>

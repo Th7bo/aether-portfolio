@@ -6,9 +6,14 @@ import HeroSection from "../components/HeroSection.astro";
 import SkillBar from "../components/SkillBar.astro";
 import Timeline from "../components/Timeline.astro";
 import Footer from "../components/Footer.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ContactCard from "../components/ContactCard.astro";
 ---
 
-<Layout title="Thibo | Home">
+<Layout 
+  title="Thibo | Software Developer"
+  description="Professional portfolio of Thibo, a Software Developer specializing in backend development, database integration, and custom software solutions."
+>
   <Navigation activeLink="/" />
 
   <main>
@@ -18,18 +23,12 @@ import Footer from "../components/Footer.astro";
       class="about-section glass"
       data-animate="fade-in"
       data-delay="0.2"
+      id="about"
     >
-      <h2>
-        <span class="dollar">$</span> about me
-      </h2>
+      <h2>About Me</h2>
       <p>
-        I'm thibo as you might have noticed, I'm currently 18 years old and
-        studying software development in Belgium.
-      </p>
-      <p>
-        I enjoy dipping my toes in software development, server development and
-        other tech related things. My passion is creating engaging Minecraft
-        servers and developing custom plugins to enhance player experiences.
+        I'm Thibo, a Software Developer based in Belgium. I specialize in creating robust applications
+        with a focus on backend development and database integration.
       </p>
     </section>
 
@@ -38,36 +37,33 @@ import Footer from "../components/Footer.astro";
         {
           name: "Languages",
           skills: [
-            { name: "JavaScript", level: 90, color: "#f7df1e" },
-            { name: "Python", level: 80, color: "#366b98" },
-            { name: "Java", level: 85, color: "#ea2d2e" },
-            { name: "Kotlin", level: 80, color: "#7F52FF" },
-            { name: "C#", level: 55, color: "#9b4f96" },
+            { name: "JavaScript", color: "#f7df1e" },
+            { name: "Python", color: "#366b98" },
+            { name: "Java", color: "#ea2d2e" },
+            { name: "Kotlin", color: "#7F52FF" },
+            { name: "C#", color: "#9b4f96" },
           ],
         },
         {
           name: "Backend",
           skills: [
-            { name: "Node.js", level: 70, color: "#68a063" },
-            { name: "REST APIs", level: 80, color: "#aa292e" },
+            { name: "Node.js", color: "#68a063" },
+            { name: "REST APIs", color: "#aa292e" },
           ],
         },
         {
           name: "Database & Cloud",
           skills: [
-            { name: "MongoDB", level: 85, color: "#3FA037" },
-            { name: "PostgreSQL", level: 80, color: "#336791" },
-            { name: "MySQL", level: 85, color: "#4479A1" },
-            { name: "Docker", level: 80, color: "#2496ED" },
-            { name: "Kubernetes", level: 35, color: "#326CE5" },
+            { name: "MongoDB", color: "#3FA037" },
+            { name: "PostgreSQL", color: "#336791" },
+            { name: "MySQL", color: "#4479A1" },
+            { name: "Docker", color: "#2496ED" },
           ],
         },
         {
-          name: "Tools & Others",
+          name: "Tools",
           skills: [
-            { name: "Git", level: 80, color: "#F05032" },
-            { name: "GitHub/GitLab", level: 85, color: "#ffffff" },
-            { name: "VS Code", level: 95, color: "#007ACC" },
+            { name: "Git", color: "#F05032" },
           ],
         },
       ]}
@@ -77,10 +73,9 @@ import Footer from "../components/Footer.astro";
       class="experience-section glass"
       data-animate="fade-in"
       data-delay="0.4"
+      id="experience"
     >
-      <h2>
-        <span class="dollar">$</span> experience
-      </h2>
+      <h2>Experience</h2>
 
       <Timeline
         items={[
@@ -105,21 +100,82 @@ import Footer from "../components/Footer.astro";
             tags: ["Kotlin", "MongoDB", "Plugin Development"],
           },
           {
-            title: "Core Developer at The Universe",
-            date: "2021 - 2022",
-            description:
-              "Assisted in transitioning from Skript to Java as the server gained popularity on TikTok. Created scalable network architecture for handling increased player load.",
-            tags: ["Java", "Network Architecture", "Optimization"],
-          },
-          {
             title: "Plugin Developer at HeatGens",
             date: "2023 - 2023",
             description:
               "Refactoring plugins from 1.19.4 to 1.21, focusing on optimizing NMS and packet handling.",
             tags: ["Java", "NMS", "Spigot API"],
           },
+          {
+            title: "Core Developer at The Universe",
+            date: "2021 - 2022",
+            description:
+              "Assisted in transitioning from Skript to Java as the server gained popularity on TikTok. Created scalable network architecture for handling increased player load.",
+            tags: ["Java", "Network Architecture", "Optimization"],
+          },
         ]}
       />
+    </section>
+
+    <section
+      class="projects-section glass"
+      data-animate="fade-in"
+      data-delay="0.6"
+      id="projects"
+    >
+      <h2>Projects</h2>
+      <div class="featured-grid">
+        <ProjectCard
+          title="EssenceMC"
+          description="Lead developer implementing a sophisticated architecture with MongoDB integration, custom JAR loaders, and a proprietary dynamic module system in Java. The system allows for runtime loading and hot-swapping of components without server restarts."
+          href="https://essencemc.net"
+          tags={["Java", "MongoDB", "Dynamic Modules", "Custom Architecture"]}
+        />
+        
+        <ProjectCard
+          title="Depthful"
+          description="My own prison server made using Kotlin, MongoDB and JDA. Everything on this server is custom coded and fine-tuned for optimal gameplay experience."
+          href="https://discord.gg/7fwgEYcPRn"
+          tags={["Kotlin", "MongoDB", "JDA", "Custom Plugins"]}
+        />
+        
+        <ProjectCard
+          title="The Universe"
+          description="Core developer for this server assisting in the switch from Skript to Java as the server gained TikTok popularity. Created a scalable network architecture for multiple servers."
+          href="https://discord.gg/theuniverse"
+          tags={["Java", "Network Architecture", "Performance Optimization"]}
+        />
+      </div>
+    </section>
+
+    <section
+      class="contact-section glass"
+      data-animate="fade-in"
+      data-delay="0.8"
+      id="contact"
+    >
+      <h2>Contact</h2>
+      <p>Here's how you can reach me directly:</p>
+
+      <div class="contact-methods">
+        <ContactCard
+          color="#ff9597"
+          second_color="#bd6e70"
+          platform="Email"
+          name="me@th7bo.dev"
+          link="mailto:me@th7bo.dev"
+        />
+      </div>
+
+      <div class="contact-info">
+        <h3>Quick Response</h3>
+        <p>I usually respond within 24-48 hours. Please include:</p>
+        <ul class="contact-list">
+          <li>A clear subject line</li>
+          <li>Details about your project/inquiry</li>
+          <li>Any relevant deadlines</li>
+        </ul>
+      </div>
     </section>
   </main>
 
@@ -136,6 +192,9 @@ import Footer from "../components/Footer.astro";
   section {
     padding: 2.5rem;
     border-radius: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   section h2 {
@@ -147,5 +206,74 @@ import Footer from "../components/Footer.astro";
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     color: rgb(var(--accent-light));
+  }
+
+  .experience-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-info {
+    padding: 1.5rem;
+    background: rgba(var(--card-bg), 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(var(--accent), 0.1);
+    margin-top: 2rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: rgb(var(--accent));
+  }
+
+  .contact-list {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+  }
+
+  .contact-list li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: rgb(var(--accent));
+  }
+
+  @media (max-width: 768px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .experience-section {
+      padding: 1.5rem 0.5rem;
+    }
+    
+    section {
+      padding: 2rem;
+    }
   }
 </style>

@@ -119,8 +119,10 @@ const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
     display: inline-block;
   }
 
-  .project-card:hover {
-    transform: translateY(-5px);
+  .project-card .project-link:hover {
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--accent), 0.5);
+    text-underline-offset: 3px;
   }
 
   @media (max-width: 480px) {

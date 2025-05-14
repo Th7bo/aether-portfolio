@@ -78,15 +78,6 @@ const { href, title, body } = Astro.props;
     color: rgba(var(--text), 0.9);
   }
 
-  .card:hover {
-    transform: translateY(-5px);
-  }
-
-  .card:hover::before {
-    background-position: 100% 100%;
-    opacity: 0.15;
-  }
-
   .card:hover .arrow {
     transform: translateX(5px);
   }

@@ -42,7 +42,7 @@
         bottom: 0;
         width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(17, 24, 39, 0.95);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         padding: 2rem;
@@ -61,7 +61,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(17, 24, 39, 0.7);
         z-index: calc(var(--z-modal) - 1);
         opacity: 0;
         transition: opacity 0.3s ease;
@@ -151,9 +151,9 @@
     --accent: 138, 78, 255; /* Bright purple */
     --accent-light: 167, 139, 250; /* Lighter purple */
     --accent-dark: 79, 70, 229; /* Darker blue */
-    --text: 248, 250, 252;
-    --background: 10, 12, 22; /* Darker background */
-    --card-bg: 17, 24, 39; /* Darker card background */
+    --text: 226, 232, 240; /* Light text for dark theme */
+    --background: 17, 24, 39; /* Darker blue-gray */
+    --card-bg: 31, 41, 55; /* Slightly lighter than background */
     
     /* Gradients */
     --accent-gradient: linear-gradient(
@@ -256,11 +256,11 @@ a {
 }
 
 .glass {
-    background: rgba(var(--card-bg), 0.25);
+    background: rgba(var(--card-bg), 0.8);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(var(--accent), 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     transition: var(--transition-fast);
     position: relative;
@@ -268,17 +268,15 @@ a {
 }
 
 .glass:hover {
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
-    transform: translateY(-5px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(var(--accent), 0.3);
     z-index: var(--z-content);
 }
 
 .glass-dark {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(13, 17, 23, 0.85);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(var(--accent), 0.15);
     box-shadow: var(--card-shadow);
 }
 

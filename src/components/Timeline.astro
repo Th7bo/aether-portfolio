@@ -36,7 +36,7 @@ const { items } = Astro.props;
 <style>
   .timeline-container {
     position: relative;
-    max-width: 800px;
+    max-width: 100%;
     margin: 2rem auto;
     padding: 1rem 0;
   }
@@ -47,7 +47,7 @@ const { items } = Astro.props;
     height: 100%;
     width: 2px;
     background: rgba(var(--accent), 0.3);
-    left: 50px;
+    left: 15px;
     top: 0;
     z-index: 1;
   }
@@ -55,12 +55,13 @@ const { items } = Astro.props;
   .timeline-item {
     position: relative;
     margin-bottom: 2.5rem;
-    padding-left: 80px;
+    padding-left: 35px;
+    width: 100%;
   }
 
   .timeline-dot {
     position: absolute;
-    left: 44px;
+    left: 9px;
     top: 0;
     width: 14px;
     height: 14px;
@@ -72,7 +73,7 @@ const { items } = Astro.props;
 
   .timeline-date {
     position: absolute;
-    left: 65px;
+    left: 35px;
     top: -10px;
     color: rgba(var(--text), 0.8);
     font-size: 0.9rem;
@@ -81,22 +82,26 @@ const { items } = Astro.props;
   }
 
   .timeline-content {
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 10px;
     position: relative;
     z-index: 2;
-    margin-top: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .timeline-title {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 
   .timeline-description {
     margin-bottom: 1rem;
     color: rgba(var(--text), 0.8);
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
 
   .timeline-tags {
@@ -119,35 +124,35 @@ const { items } = Astro.props;
   /* Medium screens */
   @media (max-width: 900px) {
     .timeline-container {
-      max-width: 600px;
+      width: 100%;
     }
   }
 
   /* Small screens */
   @media (max-width: 768px) {
     .timeline-container::before {
-      left: 30px;
+      left: 5px;
     }
 
     .timeline-item {
-      padding-left: 60px;
+      padding-left: 20px;
     }
 
     .timeline-dot {
-      left: 24px;
+      left: 0;
+      margin-left: -4px;
+      width: 10px;
+      height: 10px;
+      transform: translateY(-5px);
     }
 
     .timeline-date {
-      left: 45px;
-      font-size: 0.8rem;
+      left: 18px;
+      font-size: 0.85rem;
     }
     
     .timeline-content {
-      padding: 1.2rem;
-    }
-    
-    .timeline-title {
-      font-size: 1.1rem;
+      padding: 1.5rem;
     }
   }
   
@@ -161,25 +166,27 @@ const { items } = Astro.props;
     }
     
     .timeline-container::before {
-      left: 20px;
+      left: 3px;
     }
     
     .timeline-item {
-      padding-left: 40px;
+      padding-left: 15px;
       margin-bottom: 2rem;
       width: 100%;
       box-sizing: border-box;
     }
     
     .timeline-dot {
-      left: 14px;
-      width: 12px;
-      height: 12px;
+      left: 0;
+      margin-left: -3px;
+      width: 8px;
+      height: 8px;
+      transform: translateY(-4px);
     }
     
     .timeline-date {
-      left: 35px;
-      font-size: 0.75rem;
+      left: 12px;
+      font-size: 0.8rem;
     }
     
     .timeline-content {
